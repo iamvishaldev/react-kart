@@ -14,13 +14,12 @@ const StyledProductList = styled.div`
 
 const ProductList = () => {
   const [products, setProducts] = React.useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // Fetching Products
   const fetchData = async () => {
-    // await setLoading(true);
     commerce.products
       .list()
       .then(async (productsResult) => {
-        await setLoading(false);
         console.log(productsResult.data);
 
         const productsData = productsResult.data.map((product) => ({
@@ -32,28 +31,25 @@ const ProductList = () => {
 
         setProducts(productsData);
       })
-      .catch(() => {
-        setLoading(false);
+      .catch((error) => {
+        console.log(error);
       });
   };
-  console.log('loading', loading);
+
   useEffect(fetchData, []);
-  if (loading) return <h4>loading...</h4>;
-  if (!loading)
-    return (
-      <StyledProductList>
-        {products.length &&
-          products.map((product) => (
-            <Product
-              loading={loading}
-              key={product.id}
-              name={product.name}
-              price={product.price}
-              imageUrl={product.imageUrl}
-            />
-          ))}
-      </StyledProductList>
-    );
+  return (
+    <StyledProductList>
+      {products.length !== 0 &&
+        products.map((product) => (
+          <Product
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            imageUrl={product.imageUrl}
+          />
+        ))}
+    </StyledProductList>
+  );
 };
 
 export default ProductList;

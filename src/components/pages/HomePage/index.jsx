@@ -14,7 +14,7 @@ const index = () => {
       <Categories />
       {/* <Banner /> */}
       <Caurosel />
-      <Product />
+      {/* <Product /> */}
       <ProductList />
     </div>
   );

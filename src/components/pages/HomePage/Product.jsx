@@ -30,18 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Product(props) {
-  //   {
-  //   name = 'Iphone 12',
-  //   price = '84000',
-  //   imageUrl = 'https://m.media-amazon.com/images/I/71hVxI-Ed-S._SL1500_.jpg',
-  // }
+export default function Product({ name, price, imageUrl }) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-  console.log('props', props);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <Card className={classes.root}>
