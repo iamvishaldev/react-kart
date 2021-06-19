@@ -85,6 +85,7 @@ const Categories = () => {
     width: '100%',
     height: 100,
     marginTop: 7,
+    marginBottom: 10,
     backgroundColor: '#2874f0',
     display: 'flex',
     flexDirection: 'row',
@@ -94,18 +95,18 @@ const Categories = () => {
   };
 
   return (
-    <Container className={classes.root}>
-      <div style={categoreisStyle}>
+    <div className={classes.root}>
+      <Box style={categoreisStyle} boxShadow={3}>
         <div>Shop</div>
         {/* <img src={require('../../../images/sale.png')} alt="" /> */}
         {catergories.map((category, index) => (
-          <CategoryImage>
+          <CategoryImage key={category.id}>
             <Avatar src={category.src} className={classes.large} />
             <p>{category.name}</p>
           </CategoryImage>
         ))}
-      </div>
-    </Container>
+      </Box>
+    </div>
   );
 };
 
